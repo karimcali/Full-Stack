@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/modifying.css">
+    <title>Workshop Booking System - Report bookings</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="/images/karim.png" class="logo">
+    <ul>
+            <li><a href="/home">Home</a></li>
+             <li><a href="/create_booking">Create a New Booking</a></li>
+             <li><a href="/modify_booking">Modify a Booking</a></li>
+             <li><a href="/report_booking">Report on Bookings</a></li>
+             <li><a href="/delete_booking">Delete a Booking</a></li>
+        </ul>
+        </div>
+        <div class="content-container">
+            <div class="main-container">
+                <main class="delete-content">
+                    <section class="delete__header">
+                        <h2>Find A Booking</h2>
+                    </section>
+                    <section class="dropdowns">
+                        <label for="nameDropdown">Select Name:</label>
+                        <select id="nameDropdown">
+                            <option value="" disabled selected>Select a Name</option>
+                            <% bookings.forEach((booking) => { %>
+                                <option value="<%= booking.firstName %>"><%= booking.firstName %></option>
+                            <% }); %>
+                        </select>
+    
+                        <label for="dateDropdown">Select Date:</label>
+                        <select id="dateDropdown">
+                            <option value="" disabled selected>Select a Date</option>
+                            <% bookings.forEach((booking) => { %>
+                                <option value="<%= booking.bookingDate %>"><%= booking.bookingDate %></option>
+                            <% }); %>
+                        </select>
+                    </section>
+                    <section class="document__body">
+                        <table id="bookingsTable">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>WorkshopOption</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Booking Date</th>
+                                    <th>Booking Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% bookings.forEach((booking) => { %>
+                                    <tr>
+                                        <td><%= booking && booking._id ? booking._id : 'N/A' %></td>
+                                        <td><%= booking && booking.workshopOption ? booking.workshopOption : 'N/A' %></td>
+                                        <td><%= booking && booking.firstName ? booking.firstName : 'N/A' %></td>
+                                        <td><%= booking && booking.lastName ? booking.lastName : 'N/A' %></td>
+                                        <td><%= booking && booking.email? booking.email : 'N/A' %></td>
+                                        <td><%= booking && booking.phoneNumber ? booking.phoneNumber : 'N/A' %></td>
+                                        <td><%= booking && booking.bookingDate ? booking.bookingDate : 'N/A' %></td>
+                                        <td><%= booking && booking.bookingTime ? booking.bookingTime : 'N/A' %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+            </div>
+        </div>
+         </div>
+    <script>
+        $(document).ready(function () {
+            // Store original content of the table
+            const originalTableContent = $('#bookingsTable tbody').html();
+    
+            // Handle changes in the name dropdown
+            $('#nameDropdown').change(function () {
+                filterTable();
+            });
+    
+            // Handle changes in the date dropdown
+            $('#dateDropdown').change(function () {
+                filterTable();
+            });
+    
+        
+            function filterTable() {
+    const selectedName = $('#nameDropdown').val();
+    const selectedDate = $('#dateDropdown').val();
+
+    // Show rows that match either the selected name or date, hide others
+    $('#bookingsTable tbody tr').each(function () {
+        const name = $(this).find('td:nth-child(3)').text();
+        const date = $(this).find('td:nth-child(7)').text();
+
+        const showRow = (!selectedName || name === selectedName) &&
+                        (!selectedDate || date === selectedDate);
+
+        $(this).toggle(showRow);
+    });
+}
+
+
+            });
+    </script>
+</body>
+</html>
+

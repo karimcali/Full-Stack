@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+    <title>Workshop Booking System - Home</title>
+    
+
+</head>
+<body>
+    <div class="banner">
+    <div class="navbar">
+        <img src="/images/karim.png" class="logo">
+<ul>
+        <li><a href="/home">Home</a></li>
+         <li><a href="/create_booking">Create a New Booking</a></li>
+         <li><a href="/modify_booking">Modify a Booking</a></li>
+         <li><a href="/report_booking">Report on Bookings</a></li>
+         <li><a href="/delete_booking">Delete a Booking</a></li>
+    </ul>
+    </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Workshop Booking System - Report bookings</title>
+        <link rel="stylesheet" href="/stylesheets/workshop.css">
+     
+        
+    
+    </head>
+    <body>
+        
+            <div class="container">
+            <div class="title">Personal Details</div>
+            <form action="/view_booking" method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">First Name</span>
+                        <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">Phone number</span>
+                        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">Booking date</span>
+                        <input type="date" name="bookingDate" id="bookingDate" required>
+                    </div>
+                    
+                    
+                    <div class="input-box">
+                        <span class="details">Booking Time</span>
+                        <input type="time" name="bookingTime" id="bookingTime" required>
+                    </div>
+                </div>
+            
+                <div class="service-option">
+                    <input type="radio" name="workshopOption" id="dot-1" value="Haircut">
+                    <input type="radio" name="workshopOption" id="dot-2" value="Men's Grooming">
+                    <span class="service-chosen">Service</span>
+                    <div class="category">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="service">Haircut</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="service">Beard and facial</span>
+                        </label>
+                    </div>
+                </div>
+            
+                <div class="title">Card Details</div>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Card Holders Name</span>
+                        <input type="text" name="cardHolderName" placeholder="Enter your name" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">Card number</span>
+                        <input type="number" name="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">Expiry date</span>
+                        <input type="text" name="expiryDate" placeholder="mm/yy" required>
+                    </div>
+            
+                    <div class="input-box">
+                        <span class="details">cvv</span>
+                        <input type="number" name="cvv" placeholder="xxx" required>
+                    </div>
+                </div>
+            
+                <div class="button">
+                    <input type="submit" value="Continue">
+                </div>
+            </form>
+            
+            </div>
+     
+        
+    </body>
+    </html>
+
+  </div>
+      
+    </div>
+
+    </div>
+
+
+</body>
+</html>
+

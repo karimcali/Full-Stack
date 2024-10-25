@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/modifying.css">
+    <title>Workshop Booking System - View Bookings</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="/images/karim.png" class="logo">
+    <ul>
+            <li><a href="/home">Home</a></li>
+             <li><a href="/create_booking">Create a New Booking</a></li>
+             <li><a href="/modify_booking">Modify a Booking</a></li>
+             <li><a href="/report_booking">Report on Bookings</a></li>
+             <li><a href="/delete_booking">Delete a Booking</a></li>
+        </ul>
+        </div>
+    
+        <div class="content-container">
+            <div class="main-container">
+                <main class="modify-content">
+                    <section class="modify__header">
+                        <h2>Modify A Booking</h2>
+                    </section>
+    
+                    <section class="modify__body">
+                        <% if (booking) { %>
+                            <form action="/modify_booking" method="post">
+                                <input type="hidden" name="bookingId" value="<%= booking._id %>">
+                                <div class="user-details">
+                                    <div class="input-box">
+                                        <span class="details">First Name</span>
+                                        <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required>
+                                    </div>
+                            
+                                    <div class="input-box">
+                                        <span class="details">Last Name</span>
+                                        <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required>
+                                    </div>
+                            
+                                    <div class="input-box">
+                                        <span class="details">Email</span>
+                                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                                    </div>
+                            
+                                    <div class="input-box">
+                                        <span class="details">Phone number</span>
+                                        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number" required>
+                                    </div>
+                            
+                                    <div class="input-box">
+                                        <span class="details">Booking date</span>
+                                        <input type="date" name="bookingDate" id="bookingDate" required>
+                                    </div>
+                                    
+                                    
+                                    <div class="input-box">
+                                        <span class="details">Booking Time</span>
+                                        <input type="time" name="bookingTime" id="bookingTime" required>
+                                    </div>
+                                </div>
+                            
+                                <div class="service-option">
+                                    <input type="radio" name="workshopOption" id="dot-1" value="Haircut">
+                                    <input type="radio" name="workshopOption" id="dot-2" value="Men's Grooming">
+                                    <span class="service-chosen">Service</span>
+                                    <div class="category">
+                                        <label for="dot-1">
+                                            <span class="dot one"></span>
+                                            <span class="service">Haircut</span>
+                                        </label>
+                                        <label for="dot-2">
+                                            <span class="dot two"></span>
+                                            <span class="service">Beard and facial</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            
+                                <div class="button">
+                                    <input type="submit" value="Update Booking">
+                                </div>
+                            </form>
+                        <% } else { %>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Modify</th>
+                                        <th>Booking ID</th>
+                                        <th>Service chosen</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Booking Date</th>
+                                        <th>Booking Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% bookings.forEach((booking) => { %>
+                                        <tr>
+                                            <td class="no-underline"><a href="/modify_booking/<%= booking._id %>"> modify </a></td>
+                                            <td><%= booking && booking._id ? booking._id : 'N/A' %></td>
+                                            <td><%- booking && booking.workshopOption ? booking.workshopOption : 'N/A' %></td>
+                                            <td><%- booking && booking.firstName ? booking.firstName : 'N/A' %></td>
+                                            <td><%- booking && booking.lastName ? booking.lastName : 'N/A' %></td>
+                                            <td><%- booking && booking.email ? booking.email : 'N/A' %></td>
+                                            <td><%- booking && booking.phoneNumber ? booking.phoneNumber : 'N/A' %></td>
+                                            <td><%= booking && booking.bookingDate ? booking.bookingDate : 'N/A' %></td>
+                                            <td><%= booking && booking.bookingTime ? booking.bookingTime : 'N/A' %></td>
+                                                    
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        <% } %>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

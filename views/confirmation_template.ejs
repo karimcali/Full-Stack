@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/delete.css">
+    <title>Workshop Booking System - Delete a booking</title>
+    
+
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="/images/karim.png" class="logo">
+    <ul>
+            <li><a href="/home">Home</a></li>
+             <li><a href="/create_booking">Create a New Booking</a></li>
+             <li><a href="/modify_booking">Modify a Booking</a></li>
+             <li><a href="/report_booking">Report on Bookings</a></li>
+             <li><a href="/delete_booking">Delete a Booking</a></li>
+        </ul>
+        </div>
+        <div class="content-container">
+            <div class="main-container">
+                <main class="delete-content">
+                    <section class="delete__header">
+                        <h2>Delete A Booking</h2>
+                    </section>
+                <section class="document__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Delete</th>
+                                <th>Booking ID</th>
+                                <th>Service chosen</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Booking Date</th>
+                                <th>Booking Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>     
+                                  <% bookings.forEach((booking) => { %>
+                                    <tr>
+                                        <td class="no-underline">
+                                            <a href="/delete_booking" onclick="deleteBooking('<%= booking._id %>')"> Delete </a>
+                                        </td>
+                                        <td><%= booking && booking._id ? booking._id : 'N/A' %></td>
+                                        <td><%- booking && booking.workshopOption ? booking.workshopOption : 'N/A' %></td>
+                                        <td><%- booking && booking.firstName ? booking.firstName : 'N/A' %></td>
+                                        <td><%- booking && booking.lastName ? booking.lastName : 'N/A' %></td>
+                                        <td><%- booking && booking.email ? booking.email : 'N/A' %></td>
+                                        <td><%- booking && booking.phoneNumber ? booking.phoneNumber : 'N/A' %></td>
+                                        <td><%= booking && booking.bookingDate ? booking.bookingDate : 'N/A' %></td>
+                                        <td><%= booking && booking.bookingTime ? booking.bookingTime : 'N/A' %></td>
+                                    </tr>
+                                    <% }); %>
+                        </tbody>
+                    </table>
+                </section>
+            </main> 
+            <script>
+                function deleteBooking(bookingId) {
+                    console.log('Deleting booking with ID:', bookingId);
+
+                    if (confirm("Are you sure you want to delete this booking?")) {      
+                        window.location.href = '/delete_booking/' + bookingId;
+                    }
+                }
+            </script>
+        </div>
+</body>
+</html>
+
